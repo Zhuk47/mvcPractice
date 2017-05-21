@@ -38,12 +38,12 @@ class Controller
 
     protected function mainAction()
     {
-        echo require_once('view/main.php');
+        require_once('view/main.php');
     }
 
     protected function errorAction()
     {
-        echo require_once('view/error.php');
+        require_once('view/error.php');
         exit();
     }
 
@@ -51,7 +51,7 @@ class Controller
     {
         $studentRepository = new StudentRepository();
         $students = $studentRepository->findAll();
-        echo require_once('view/student/index.php');
+        require_once('view/student/index.php');
     }
 
     protected function viewStudentAction()
@@ -62,7 +62,7 @@ class Controller
         if (!$student) {
             $this->errorAction();
         }
-        echo require_once('view/student/view.php');
+        require_once('view/student/view.php');
     }
 
     protected function updateStudentAction()
@@ -75,7 +75,7 @@ class Controller
                 $this->errorAction();
             }
             $action = 'update';
-            echo require_once('view/student/form.php');
+            require_once('view/student/form.php');
             return;
         }
 
@@ -99,7 +99,7 @@ class Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $action = 'create';
-            echo require_once('view/student/form.php');
+            require_once('view/student/form.php');
             return;
         }
 
