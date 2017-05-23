@@ -31,6 +31,9 @@ class Controller
             case 'delete-student':
                 $this->deleteStudentAction();
                 break;
+            case 'index-family':
+                $this->indexFamilyAction();
+                break;
             default:
                 $this->errorAction();
         }
@@ -123,6 +126,14 @@ class Controller
         $studentRepository = new StudentRepository();
         $studentRepository->delete($id);
         header('Location: index.php?action=index-student');
+    }
+
+    protected function indexFamilyAction()
+    {
+        $familyRepository = new FamilyRepository();
+        $families = $familyRepository->findAll();
+//        echo 'hello';
+        require_once('view/family/index.php');
     }
 
     protected function getId()
