@@ -1,4 +1,5 @@
 <?php
+namespace App\Model;
 
 class Student extends ModelAbstract
 {
@@ -28,5 +29,4 @@ class Student extends ModelAbstract
         }
         return true;
     }
-
 }

@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Repository;
+use PDO;
+use PDOException;
+
 /**
  * Created by PhpStorm.
  * User: artem

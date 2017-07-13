@@ -1,11 +1,15 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: artem
  * Date: 22.05.17
  * Time: 21:46
  */
+
+namespace App\Repository;
+
+use App\Model\Family;
+
 class FamilyRepository extends RepositoryAbstract
 {
     protected $entityName = 'family';

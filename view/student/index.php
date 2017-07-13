@@ -6,7 +6,7 @@ require_once('../view/template/header.php');
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Имя</th>
+            <th>&lt;th&gt;Имя</th>
             <th>Фамилия</th>
             <th>Класс</th>
             <th>Действия</th>
@@ -15,9 +15,9 @@ require_once('../view/template/header.php');
         <tbody>
         <?php foreach ($students as $student) { ?>
             <tr>
-                <td><?= $student->firstName ?></td>
-                <td><?= $student->lastName ?></td>
-                <td><?= $student->class ?></td>
+                <td><?= htmlspecialchars($student->firstName) ?></td>
+                <td><?= htmlspecialchars($student->lastName) ?></td>
+                <td><?= htmlspecialchars($student->class) ?></td>
                 <td>
                     <a href="index.php?action=view-student&id=<?= $student->id ?>" class="btn btn-primary">
                         <i class="glyphicon glyphicon-eye-open"></i>

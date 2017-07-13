@@ -1,5 +1,11 @@
 <?php
 
+namespace App;
+
+use App\Model\Student;
+use App\Repository\FamilyRepository;
+use App\Repository\StudentRepository;
+
 class Controller
 {
     protected $action;
@@ -132,7 +138,6 @@ class Controller
     {
         $familyRepository = new FamilyRepository();
         $families = $familyRepository->findAll();
-//        echo 'hello';
         require_once('view/family/index.php');
     }
 

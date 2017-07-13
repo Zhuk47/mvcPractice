@@ -1,6 +1,8 @@
 <?php
 
-require_once('../autoloader.php');
+namespace App\Repository;
+
+use App\Model\Student;
 
 class StudentRepository extends RepositoryAbstract
 {

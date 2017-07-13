@@ -7,13 +7,13 @@ spl_autoload_register(function ($className) {
 function getClassPath(string $className): string
 {
     $registeredClasses = [
-        'Controller' => 'Controller',
-        'ModelAbstract' => 'model/ModelAbstract',
-        'Student' => 'model/Student',
-        'Family' => 'model/Family',
-        'RepositoryAbstract' => 'repository/RepositoryAbstract',
-        'StudentRepository' => 'repository/StudentRepository',
-        'FamilyRepository' => 'repository/FamilyRepository'
+        'App\Controller' => 'Controller',
+        'App\Model\ModelAbstract' => 'model/ModelAbstract',
+        'App\Model\Student' => 'model/Student',
+        'App\Model\Family' => 'model/Family',
+        'App\Repository\RepositoryAbstract' => 'repository/RepositoryAbstract',
+        'App\Repository\StudentRepository' => 'repository/StudentRepository',
+        'App\Repository\FamilyRepository' => 'repository/FamilyRepository'
     ];
 
     return $registeredClasses[$className];
