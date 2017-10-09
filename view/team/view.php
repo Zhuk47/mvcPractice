@@ -2,16 +2,16 @@
 require_once('../view/template/header.php');
 ?>
     <div class="panel panel-default">
-        <div class="panel-heading">Просмотр студента</div>
+        <div class="panel-heading">Team overview</div>
         <div class="panel-body">
             <p>
-                <strong>Имя: </strong><?= $student->firstName ?>
+                <strong>Name: </strong><?= $team->name ?>
             </p>
             <p>
-                <strong>Фамилия: </strong><?= $student->lastName ?>
+                <strong>Founded in: </strong><?= $team->founded ?>
             </p>
             <p>
-                <strong>Класс: </strong><?= $student->class ?>
+                <strong>Car model: </strong><?= $team->car ?>
             </p>
         </div>
     </div>

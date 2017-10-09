@@ -9,11 +9,11 @@ function getClassPath(string $className): string
     $registeredClasses = [
         'App\Controller' => 'Controller',
         'App\Model\ModelAbstract' => 'model/ModelAbstract',
-        'App\Model\Student' => 'model/Student',
-        'App\Model\Family' => 'model/Family',
+        'App\Model\Team' => 'model/Team',
+        'App\Model\Sponsor' => 'model/Sponsor',
         'App\Repository\RepositoryAbstract' => 'repository/RepositoryAbstract',
-        'App\Repository\StudentRepository' => 'repository/StudentRepository',
-        'App\Repository\FamilyRepository' => 'repository/FamilyRepository'
+        'App\Repository\TeamRepository' => 'repository/TeamRepository',
+        'App\Repository\SponsorRepository' => 'repository/SponsorRepository'
     ];
 
     return $registeredClasses[$className];

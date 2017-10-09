@@ -30,31 +30,32 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php?action=main">A-level</a>
+                <a class="navbar-brand" href="index.php?action=main">Team manager</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.php?action=main">Главная</a></li>
+                    <li><a href="index.php?action=main">Main</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Студенты <span class="caret"></span></a>
+                           aria-expanded="false">Teams <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="index.php?action=index-student">Список студентов</a></li>
+                            <li><a href="index.php?action=index-team">Teams list</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="index.php?action=delete-all-student">Удалить всех</a></li>
+                            <li><a href="index.php?action=delete-all-teams">Delete all</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Родители <span class="caret"></span></a>
+                           aria-expanded="false">Sponsors <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="index.php?action=index-family">Список родителей</a></li>
+                            <li><a href="index.php?action=index-sponsor">Sponsors list</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="index.php?action=delete-all-families">Удалить всех</a></li>
+                            <li><a href="index.php?action=delete-all-sponsors">Delete all</a></li>
                         </ul>
                     </li>
+                    <li><a href="index.php?action=index-all">Team's sponsors</a></li>
                 </ul>
 
             </div><!-- /.navbar-collapse -->
