@@ -6,7 +6,7 @@ require_once('../view/template/header.php');
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Name</th>
+            <th>Team's name</th>
             <th>Car model</th>
             <th>Founded in</th>
             <th>Tools</th>
