@@ -13,6 +13,11 @@ require_once('../view/template/header.php');
             <p>
                 <strong>Car model: </strong><?= $team->car ?>
             </p>
+            <p>
+                <strong>Team's sponsors: </strong><?php foreach ($sponsors as $sponsor) { ?>
+            <td><?= $sponsor->name;
+                } ?></td>
+            </p>
         </div>
     </div>
 <?php

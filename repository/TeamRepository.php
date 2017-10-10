@@ -18,10 +18,10 @@ class TeamRepository extends RepositoryAbstract
      */
     public function findById($id)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM {$this->entityName} WHERE id = :id");
-        $stmt->execute(['id' => $id]);
+        $stmt = $this->pdo->prepare("SELECT * FROM {$this->entityName} WHERE team_id = :team_id");
+        $stmt->execute(['team_id' => $id]);
         foreach ($stmt as $row) {
-            return new Team($row['name'], $row['founded'], $row['car'], $row['id']);
+            return new Team($row['name'], $row['founded'], $row['car'], $row['team_id']);
         }
         return null;
     }
@@ -35,7 +35,7 @@ class TeamRepository extends RepositoryAbstract
         $stmt->execute();
         $teams = [];
         foreach ($stmt as $row) {
-            $teams[] = new Team($row['name'], $row['founded'], $row['car'], $row['id']);
+            $teams[] = new Team($row['name'], $row['founded'], $row['car'], $row['team_id']);
         }
         return $teams;
     }
@@ -58,9 +58,9 @@ class TeamRepository extends RepositoryAbstract
      */
     public function update(Team $team)
     {
-        $stmt = $this->pdo->prepare("UPDATE {$this->entityName} SET name = :name, founded = :founded, car = :car WHERE id = :id");
+        $stmt = $this->pdo->prepare("UPDATE {$this->entityName} SET name = :name, founded = :founded, car = :car WHERE team_id = :team_id");
         $stmt->execute([
-            'id' => $team->id,
+            'team_id' => $team->id,
             'name' => $team->name,
             'founded' => $team->founded,
             'car' => $team->car
@@ -72,23 +72,13 @@ class TeamRepository extends RepositoryAbstract
      */
     public function delete(int $id)
     {
-        $stmt = $this->pdo->prepare("DELETE FROM {$this->entityName} WHERE id = :id");
-        $stmt->execute(['id' => $id]);
+        $stmt = $this->pdo->prepare("DELETE FROM {$this->entityName} WHERE team_id = :team_id");
+        $stmt->execute(['team_id' => $id]);
     }
 
     public function deleteAll()
     {
         $stmt = $this->pdo->prepare("TRUNCATE TABLE {$this->entityName}");
         $stmt->execute();
-    }
-
-    public function showAll()
-    {
-        $stmt = $this->pdo->prepare("SELECT name, founded, car FROM {$this->entityName}");
-        $stmt->execute([
-            'name' => $team->name,
-            'founded' => $team->founded,
-            'car' => $team->car
-        ]);
     }
 }

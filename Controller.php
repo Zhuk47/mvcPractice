@@ -5,6 +5,7 @@ namespace App;
 use App\Model\Sponsor;
 use App\Model\Team;
 use App\Repository\SponsorRepository;
+use App\Repository\SponsorTeamRepository;
 use App\Repository\TeamRepository;
 
 class Controller
@@ -101,6 +102,8 @@ class Controller
     protected function viewTeamAction()
     {
         $id = $this->getId();
+        $sponsorTeamRepository = new SponsorTeamRepository();
+        $sponsors = $sponsorTeamRepository->getSponsors($id);
         $teamRepository = new TeamRepository();
         $team = $teamRepository->findById($id);
         if (!$team) {
@@ -248,12 +251,5 @@ class Controller
         $sponsorRepository = new SponsorRepository();
         $sponsorRepository->deleteAll();
         header('Location: index.php?action=index-sponsor');
-    }
-
-    protected function indexAll()
-    {
-        $sponsorRepository = new SponsorRepository();
-        $sponsors = $sponsorRepository->showAll();
-        require_once('view/sponsor/index.php');
     }
 }

@@ -27,7 +27,7 @@ class SponsorRepository extends RepositoryAbstract
         $stmt->execute();
         $sponsors = [];
         foreach ($stmt as $row) {
-            $sponsors[] = new Sponsor($row['name'], $row['id']);
+            $sponsors[] = new Sponsor($row['name'], $row['sponsor_id']);
         }
         return $sponsors;
     }
@@ -38,10 +38,10 @@ class SponsorRepository extends RepositoryAbstract
      */
     public function findById($id)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM {$this->entityName} WHERE id = :id");
-        $stmt->execute(['id' => $id]);
+        $stmt = $this->pdo->prepare("SELECT * FROM {$this->entityName} WHERE sponsor_id = :sponsor_id");
+        $stmt->execute(['sponsor_id' => $id]);
         foreach ($stmt as $row) {
-            return new Sponsor($row['name'], $row['id']);
+            return new Sponsor($row['name'], $row['sponsor_id']);
         }
         return null;
     }
@@ -74,8 +74,8 @@ class SponsorRepository extends RepositoryAbstract
      */
     public function delete(int $id)
     {
-        $stmt = $this->pdo->prepare("DELETE FROM {$this->entityName} WHERE id = :id");
-        $stmt->execute(['id' => $id]);
+        $stmt = $this->pdo->prepare("DELETE FROM {$this->entityName} WHERE sponsor_id = :sponsor_id");
+        $stmt->execute(['sponsor_id' => $id]);
     }
 
     public function deleteAll()
@@ -83,14 +83,4 @@ class SponsorRepository extends RepositoryAbstract
         $stmt = $this->pdo->prepare("TRUNCATE TABLE {$this->entityName}");
         $stmt->execute();
     }
-
-    public function showAll()
-    {
-        $stmt = $this->pdo->prepare("SELECT id, name FROM {$this->entityName}");
-        $stmt->execute([
-            'name' => $sponsor->name,
-            'id' => $sponsor->id
-        ]);
-    }
-
 }
