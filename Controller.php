@@ -4,6 +4,7 @@ namespace App;
 
 use App\Model\Sponsor;
 use App\Model\Team;
+use App\Model\SponsorTeam;
 use App\Repository\SponsorRepository;
 use App\Repository\SponsorTeamRepository;
 use App\Repository\TeamRepository;
@@ -81,6 +82,8 @@ class Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $action = 'create';
+            $sponsorRepository = new SponsorRepository();
+            $sponsors = $sponsorRepository->findAll();
             require_once('view/team/form.php');
             return;
         }
@@ -88,8 +91,8 @@ class Controller
         $name = isset($_POST['name']) ? trim($_POST['name']) : null;
         $founded = isset($_POST['founded']) ? trim($_POST['founded']) : null;
         $car = isset($_POST['car']) ? trim($_POST['car']) : null;
-
         $team = new Team($name, $founded, $car);
+        $sps = $_POST['sponsor_id'];
 
         if ($team->validate()) {
             $teamRepository = new TeamRepository();
@@ -106,6 +109,7 @@ class Controller
         $sponsors = $sponsorTeamRepository->getSponsors($id);
         $teamRepository = new TeamRepository();
         $team = $teamRepository->findById($id);
+
         if (!$team) {
             $this->errorAction();
         }
@@ -133,6 +137,8 @@ class Controller
             $id = $this->getId();
             $teamRepository = new TeamRepository();
             $team = $teamRepository->findById($id);
+            $sponsorRepository = new SponsorRepository();
+            $sponsors = $sponsorRepository->findAll();
             if (!$team) {
                 $this->errorAction();
             }
@@ -183,13 +189,15 @@ class Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $action = 'create';
+            $teamRepository = new TeamRepository();
+            $teams = $teamRepository->findAll();
             require_once('view/sponsor/form.php');
             return;
         }
 
         $name = isset($_POST['name']) ? trim($_POST['name']) : null;
-
         $sponsor = new Sponsor($name);
+        $tms = $_POST['team_id'];
 
         if ($sponsor->validate()) {
             $sponsorRepository = new SponsorRepository();
@@ -203,6 +211,8 @@ class Controller
     {
         $id = $this->getId();
         $sponsorRepository = new SponsorRepository();
+        $sponsorTeamRepository = new SponsorTeamRepository();
+        $teams = $sponsorTeamRepository->getTeams($id);
         $sponsor = $sponsorRepository->findById($id);
         if (!$sponsor) {
             $this->errorAction();
@@ -216,6 +226,8 @@ class Controller
             $id = $this->getId();
             $sponsorRepository = new SponsorRepository();
             $sponsor = $sponsorRepository->findById($id);
+            $teamRepository = new TeamRepository();
+            $teams = $teamRepository->findAll();
             if (!$sponsor) {
                 $this->errorAction();
             }

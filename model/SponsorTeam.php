@@ -9,7 +9,7 @@
 namespace App\Model;
 
 
-class Sponsor_Team extends ModelAbstract
+class SponsorTeam extends ModelAbstract
 {
     public $team_id;
     public $sponsor_id;

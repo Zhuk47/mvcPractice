@@ -20,6 +20,7 @@ class TeamRepository extends RepositoryAbstract
     {
         $stmt = $this->pdo->prepare("SELECT * FROM {$this->entityName} WHERE team_id = :team_id");
         $stmt->execute(['team_id' => $id]);
+
         foreach ($stmt as $row) {
             return new Team($row['name'], $row['founded'], $row['car'], $row['team_id']);
         }
@@ -49,8 +50,16 @@ class TeamRepository extends RepositoryAbstract
         $stmt->execute([
             'name' => $team->name,
             'founded' => $team->founded,
-            'car' => $team->car
+            'car' => $team->car,
         ]);
+        $team_id = $this->pdo->lastInsertId();
+        foreach ($_POST['sponsor_id'] as $id) {
+            $dpt = $this->pdo->prepare("INSERT INTO sponsor_team (team_id, sponsor_id) VALUES (:team_id, :sponsor_id)");
+            $dpt->execute([
+                'team_id' => $team_id,
+                'sponsor_id' => $id
+            ]);
+        }
     }
 
     /**

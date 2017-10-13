@@ -7,6 +7,14 @@ require_once('../view/template/header.php');
             <p>
                 <strong>Name: </strong><?= $sponsor->name ?>
             </p>
+            <p>
+                <strong>Sponsored teams and their cars: </strong>
+                <?php foreach ($teams as $team) { ?>
+                <td><br><?= $team->name ?></td>
+                ----
+                <td><?= $team->car ?><br></td>
+                <?php } ?>
+            </p>
         </div>
     </div>
 <?php

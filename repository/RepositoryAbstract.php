@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repository;
+
 use PDO;
 use PDOException;
 
@@ -17,7 +18,7 @@ abstract class RepositoryAbstract
 
     public function __construct()
     {
-        $config = (require_once('../config/config.php'))['db'];
+        $config = (include(__DIR__ . '/../config/config.php'))['db'];
         $dsn = "mysql:host={$config['host']};dbname={$config['dbname']};charset={$config['charset']}";
         $opt = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

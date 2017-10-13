@@ -55,6 +55,14 @@ class SponsorRepository extends RepositoryAbstract
         $stmt->execute([
             'name' => $sponsor->name
         ]);
+        $sponsor_id = $this->pdo->lastInsertId();
+        foreach ($_POST['team_id'] as $id) {
+            $dpt = $this->pdo->prepare("INSERT INTO sponsor_team (team_id, sponsor_id) VALUES (:team_id, :sponsor_id)");
+            $dpt->execute([
+                'team_id' => $id,
+                'sponsor_id' => $sponsor_id
+            ]);
+        }
     }
 
     /**

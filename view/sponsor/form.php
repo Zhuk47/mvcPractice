@@ -9,6 +9,13 @@ require_once('../view/template/header.php');
             <input type="text" class="form-control" id="name" name="name" placeholder="name"
                    value="<?= isset($sponsor->name) ? $sponsor->name : '' ?>">
         </div>
+        <div>
+            <b>Select sponsored teams:</b><br>
+            <?php foreach ($teams as $team) { ?>
+                <input type="checkbox" name="team_id[]" value="<?= $team->id ?>">
+                <label for="<?= $team->id ?>"><?= $team->name ?></label>
+            <?php } ?>
+        </div>
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
 <?php

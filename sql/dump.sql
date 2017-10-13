@@ -15,7 +15,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
 --
 -- Table structure for table `sponsor`
 --
@@ -24,9 +23,9 @@ DROP TABLE IF EXISTS `sponsor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sponsor` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sponsor_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`sponsor_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -49,8 +48,10 @@ DROP TABLE IF EXISTS `sponsor_team`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sponsor_team` (
   `team_id` int(11) DEFAULT NULL,
-  `sponsor_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `sponsor_id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -59,7 +60,7 @@ CREATE TABLE `sponsor_team` (
 
 LOCK TABLES `sponsor_team` WRITE;
 /*!40000 ALTER TABLE `sponsor_team` DISABLE KEYS */;
-INSERT INTO `sponsor_team` VALUES (1,1),(1,3),(1,4),(1,6),(1,10),(2,1),(2,3),(2,4),(2,6),(2,11),(3,1),(3,3),(3,4),(3,6),(4,1),(4,3),(4,4),(4,6),(4,12),(4,13),(5,1),(5,3),(5,4),(5,5),(5,6),(6,1),(6,2),(6,3),(6,4),(6,6),(6,7),(6,8),(6,9);
+INSERT INTO `sponsor_team` VALUES (1,1,1),(1,3,2),(1,4,3),(1,6,4),(1,10,5),(2,1,6),(2,3,7),(2,4,8),(2,6,9),(2,11,10),(3,1,11),(3,3,12),(3,4,13),(3,6,14),(4,1,15),(4,3,16),(4,4,17),(4,6,18),(4,12,19),(4,13,20),(5,1,21),(5,3,22),(5,4,23),(5,5,24),(5,6,25),(6,1,26),(6,2,27),(6,3,28),(6,4,29),(6,6,30),(6,7,31),(6,8,32),(6,9,33),(1,14,46),(2,14,47),(3,14,48),(4,14,49),(5,14,50),(6,14,51),(38,6,52),(38,9,53),(38,11,54),(38,12,55);
 /*!40000 ALTER TABLE `sponsor_team` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -71,12 +72,12 @@ DROP TABLE IF EXISTS `team`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `team` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
+  `team_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8 NOT NULL,
   `founded` year(4) DEFAULT NULL,
-  `car` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+  `car` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`team_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,7 +86,7 @@ CREATE TABLE `team` (
 
 LOCK TABLES `team` WRITE;
 /*!40000 ALTER TABLE `team` DISABLE KEYS */;
-INSERT INTO `team` VALUES (1,'Abt Sportsline',1991,'Audi'),(2,'Phoenix',1999,'Audi'),(3,'Rosberg',1994,'Audi'),(4,'RBM',1995,'BMW'),(5,'RMG',2011,'BMW'),(6,'HWA',1998,'Mercedes'),(8,'Devil\'s game',1999,'Nosferatu');
+INSERT INTO `team` VALUES (1,'Abt Sportsline',1991,'Audi'),(2,'Phoenix',1999,'Audi'),(3,'Rosberg',1994,'Audi'),(4,'RBM',1995,'BMW'),(5,'RMG',2011,'BMW'),(6,'HWA',1998,'Mercedes'),(38,'TeamBRR',2017,'BRR Type 3');
 /*!40000 ALTER TABLE `team` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -98,4 +99,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-09 15:41:17
+-- Dump completed on 2017-10-13 15:38:55
