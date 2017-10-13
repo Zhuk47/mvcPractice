@@ -11,7 +11,7 @@ function getClassPath(string $className): string
         'App\Model\ModelAbstract' => 'model/ModelAbstract',
         'App\Model\Team' => 'model/Team',
         'App\Model\Sponsor' => 'model/Sponsor',
-        'App\Model\Sponsor_Team' => 'model/Sponsor_Team',
+        'App\Model\SponsorTeam' => 'model/SponsorTeam',
         'App\Repository\RepositoryAbstract' => 'repository/RepositoryAbstract',
         'App\Repository\TeamRepository' => 'repository/TeamRepository',
         'App\Repository\SponsorRepository' => 'repository/SponsorRepository',
