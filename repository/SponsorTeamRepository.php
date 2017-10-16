@@ -73,9 +73,4 @@ class SponsorTeamRepository extends RepositoryAbstract
         return $teams;
     }
 
-    public function getId(string $name)
-    {
-
-    }
-
 }

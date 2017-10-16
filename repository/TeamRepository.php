@@ -83,6 +83,8 @@ class TeamRepository extends RepositoryAbstract
     {
         $stmt = $this->pdo->prepare("DELETE FROM {$this->entityName} WHERE team_id = :team_id");
         $stmt->execute(['team_id' => $id]);
+        $stmt = $this->pdo->prepare("DELETE FROM sponsor_team WHERE team_id = :team_id");
+        $stmt->execute(['team_id' => $id]);
     }
 
     public function deleteAll()

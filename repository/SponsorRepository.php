@@ -70,9 +70,9 @@ class SponsorRepository extends RepositoryAbstract
      */
     public function update(Sponsor $sponsor)
     {
-        $stmt = $this->pdo->prepare("UPDATE {$this->entityName} SET name = :name WHERE id = :id");
+        $stmt = $this->pdo->prepare("UPDATE {$this->entityName} SET name = :name WHERE sponsor_id = :sponsor_id");
         $stmt->execute([
-            'id' => $sponsor->id,
+            'sponsor_id' => $sponsor->id,
             'name' => $sponsor->name
         ]);
     }
@@ -84,11 +84,14 @@ class SponsorRepository extends RepositoryAbstract
     {
         $stmt = $this->pdo->prepare("DELETE FROM {$this->entityName} WHERE sponsor_id = :sponsor_id");
         $stmt->execute(['sponsor_id' => $id]);
+        $stmt = $this->pdo->prepare("DELETE FROM sponsor_team WHERE sponsor_id = :sponsor_id");
+        $stmt->execute(['sponsor_id' => $id]);
     }
 
     public function deleteAll()
     {
         $stmt = $this->pdo->prepare("TRUNCATE TABLE {$this->entityName}");
         $stmt->execute();
+
     }
 }
