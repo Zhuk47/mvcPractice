@@ -75,6 +75,15 @@ class SponsorRepository extends RepositoryAbstract
             'sponsor_id' => $sponsor->id,
             'name' => $sponsor->name
         ]);
+        $dst = $this->pdo->prepare("DELETE FROM sponsor_team WHERE sponsor_id = :sponsor_id");
+        $dst->execute(['sponsor_id' => $sponsor->id]);
+        foreach ($_POST['team_id'] as $id) {
+            $dpt = $this->pdo->prepare("REPLACE INTO sponsor_team (team_id, sponsor_id) VALUES (:team_id, :sponsor_id)");
+            $dpt->execute([
+                'team_id' => $id,
+                'sponsor_id' => $sponsor->id
+            ]);
+        }
     }
 
     /**

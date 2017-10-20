@@ -11,6 +11,7 @@ require_once('../view/template/header.php');
         </div>
         <div>
             <b>Select sponsored teams:</b><br>
+            (If you update your sponsor please select sponsored teams <b>again</b>)<br>
             <?php foreach ($teams as $team) { ?>
                 <input type="checkbox" name="team_id[]" value="<?= $team->id ?>">
                 <label for="<?= $team->id ?>"><?= $team->name ?></label>
