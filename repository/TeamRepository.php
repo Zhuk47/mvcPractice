@@ -53,13 +53,16 @@ class TeamRepository extends RepositoryAbstract
             'car' => $team->car,
         ]);
         $team_id = $this->pdo->lastInsertId();
-        foreach ($_POST['sponsor_id'] as $id) {
-            $dpt = $this->pdo->prepare("INSERT INTO sponsor_team (team_id, sponsor_id) VALUES (:team_id, :sponsor_id)");
-            $dpt->execute([
-                'team_id' => $team_id,
-                'sponsor_id' => $id
-            ]);
+        if($_POST['sponsor_id']) {
+            foreach ($_POST['sponsor_id'] as $id) {
+                $dpt = $this->pdo->prepare("INSERT INTO sponsor_team (team_id, sponsor_id) VALUES (:team_id, :sponsor_id)");
+                $dpt->execute([
+                    'team_id' => $team_id,
+                    'sponsor_id' => $id
+                ]);
+            }
         }
+        else return null;
     }
 
     /**
@@ -76,13 +79,16 @@ class TeamRepository extends RepositoryAbstract
         ]);
         $dst = $this->pdo->prepare("DELETE FROM sponsor_team WHERE team_id = :team_id");
         $dst->execute(['team_id' => $team->id]);
-        foreach ($_POST['sponsor_id'] as $id) {
-            $dpt = $this->pdo->prepare("REPLACE INTO sponsor_team (team_id, sponsor_id) VALUES (:team_id, :sponsor_id)");
-            $dpt->execute([
-                'team_id' => $team->id,
-                'sponsor_id' => $id
-            ]);
+        if($_POST['sponsor_id']) {
+            foreach ($_POST['sponsor_id'] as $id) {
+                $dpt = $this->pdo->prepare("REPLACE INTO sponsor_team (team_id, sponsor_id) VALUES (:team_id, :sponsor_id)");
+                $dpt->execute([
+                    'team_id' => $team->id,
+                    'sponsor_id' => $id
+                ]);
+            }
         }
+        else return null;
     }
 
     /**
